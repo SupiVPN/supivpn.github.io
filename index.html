@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#090d0b">
     <meta name="description" content="Meet SupiVPN: a VPN project for teams, bringing workplace sign-in, group-based access, and session controls together.">
+    <link rel="canonical" href="https://supivpn.com/">
+    <meta property="og:url" content="https://supivpn.com/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="SupiVPN — Your team. Connected.">
     <meta property="og:description" content="VPN access for your team, built around your work identity and your access rules.">
@@ -24,7 +26,8 @@
         </a>
         <nav class="main-nav" aria-label="Main navigation">
           <a href="#features">Features</a>
-          <a href="#contact">Get in touch <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></a>
+          <a href="#support">Support</a>
+          <a href="#contact">Contact <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></a>
         </nav>
       </header>
 
@@ -62,6 +65,13 @@
               <p>SupiVPN is a VPN project for teams that need access to private resources. It brings workplace sign-in and group-based access together.</p>
               <p>People use their existing work identity. Teams define who can connect, with session rules that fit each group.</p>
             </div>
+            <nav class="project-badges" aria-label="Live project status on GitHub">
+              <a href="https://github.com/SupiVPN/supivpn/actions/workflows/checks.yml"><img src="https://img.shields.io/github/actions/workflow/status/SupiVPN/supivpn/checks.yml?branch=main&amp;event=push&amp;style=flat-square&amp;logo=github&amp;label=checks" alt="Build checks" height="20" loading="lazy" decoding="async"></a>
+              <a href="https://github.com/SupiVPN/supivpn/releases/latest"><img src="https://img.shields.io/github/v/release/SupiVPN/supivpn?style=flat-square&amp;color=16a34a&amp;label=release" alt="Latest release" height="20" loading="lazy" decoding="async"></a>
+              <a href="https://github.com/SupiVPN/supivpn/blob/main/go.mod"><img src="https://img.shields.io/github/go-mod/go-version/SupiVPN/supivpn?style=flat-square&amp;logo=go&amp;logoColor=white" alt="Go version" height="20" loading="lazy" decoding="async"></a>
+              <a href="https://github.com/SupiVPN/supivpn/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0--only-2563eb?style=flat-square" alt="License: AGPL-3.0-only" height="20" loading="lazy" decoding="async"></a>
+              <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/RELEASES.md"><img src="https://img.shields.io/badge/linux-arm64%20%7C%20amd64-475569?style=flat-square&amp;logo=linux&amp;logoColor=white" alt="Linux ARM64 and AMD64" height="20" loading="lazy" decoding="async"></a>
+            </nav>
           </div>
         </section>
 
@@ -99,31 +109,36 @@
           </div>
         </section>
 
+        <section class="support-section" id="support" aria-labelledby="support-title">
+          <div class="support-copy">
+            <div class="section-label"><span class="status-dot" aria-hidden="true"></span> Keep it open <span class="section-index">/ 04</span></div>
+            <h2 id="support-title">Good code needs<br><span>a keepalive.</span></h2>
+            <p>Help sustain the open-source work behind SupiVPN: maintenance, security testing and documentation.</p>
+            <div class="support-actions">
+              <iframe class="sponsor-button" src="https://github.com/sponsors/enotf/button" title="Sponsor enotf on GitHub" height="32" width="114" loading="lazy"></iframe>
+              <span>One-time or monthly. Your choice.</span>
+            </div>
+            <p class="support-note">Support is voluntary and includes no services, priority support or exclusive features.</p>
+          </div>
+          <div class="support-widget">
+            <iframe class="sponsor-card" src="https://github.com/sponsors/enotf/card" title="Support SupiVPN development through GitHub Sponsors" height="225" width="600" loading="lazy"></iframe>
+            <a class="support-link" href="https://github.com/sponsors/enotf">View sponsorship options <span aria-hidden="true">↗</span></a>
+          </div>
+        </section>
+
         <section class="closing-section" id="contact" aria-labelledby="closing-title">
           <span class="closing-star" aria-hidden="true">✳</span>
           <p class="eyebrow">Good connections start with a hello</p>
           <h2 id="closing-title">Let’s talk<br><span>private access.</span></h2>
-          <a class="text-link" href="mailto:contact@supivpn.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>contact@supivpn.com</a>
-          <nav class="social-links" aria-label="SupiVPN on social media">
+          <a class="text-link" href="mailto:enot@supivpn.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>enot@supivpn.com</a>
+          <nav class="social-links" aria-label="SupiVPN community links">
             <a href="https://www.linkedin.com/company/supivpn/">
               <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M4 2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm2 8v9h3v-9H6Zm1.5-4.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM11 10v9h3v-5c0-1.3.6-2 1.6-2s1.4.7 1.4 2v5h3v-5.7c0-2.4-1.1-3.6-3.1-3.6-1.4 0-2.4.7-2.9 1.5V10h-3Z"/></svg>
               LinkedIn
             </a>
-            <a href="https://www.youtube.com/@supivpnofficial">
-              <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill-rule="evenodd" d="M12 4c-3 0-6 .2-7.5.5-1.7.3-2.5 1.2-2.8 2.8C1.5 8.5 1.4 10 1.4 12s.1 3.5.3 4.7c.3 1.6 1.1 2.5 2.8 2.8 1.5.3 4.5.5 7.5.5s6-.2 7.5-.5c1.7-.3 2.5-1.2 2.8-2.8.2-1.2.3-2.7.3-4.7s-.1-3.5-.3-4.7c-.3-1.6-1.1-2.5-2.8-2.8C18 4.2 15 4 12 4Zm-2 4.5v7l6-3.5-6-3.5Z"/></svg>
-              YouTube
-            </a>
-            <a href="https://bsky.app/profile/supivpn.bsky.social">
-              <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 10.7C10 6.8 6.2 3.2 3.4 2.2 1.6 1.5 1 2.7 1 4.2c0 1.7.8 6.9 1.4 8.2.8 1.7 3 2.3 5.6 1.9-3.8.7-4.9 2.7-3 4.9 3.5 4 5.9 1 7-2.2 1.1 3.2 3.5 6.2 7 2.2 1.9-2.2.8-4.2-3-4.9 2.6.4 4.8-.2 5.6-1.9.6-1.3 1.4-6.5 1.4-8.2 0-1.5-.6-2.7-2.4-2C17.8 3.2 14 6.8 12 10.7Z"/></svg>
-              Bluesky
-            </a>
-            <a href="https://x.com/supivpn">
-              <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.6 2H22l-7.4 8.5L23 22h-6.7l-5.2-7.1L4.9 22H1.5l8-9.2L1.5 2h6.8l4.7 6.4L18.6 2ZM17.5 20h1.8L7.1 4H5.3l12.2 16Z"/></svg>
-              X
-            </a>
-            <a href="https://t.me/supivpn_official">
-              <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m21.3 3.3-19 7.3c-1.3.5-1.3 1.3-.2 1.7l4.8 1.5 11.2-7c.5-.3.8-.1.4.3L9.4 15.3l-.3 4.6c.5 0 .8-.2 1.1-.5l2.3-2.2 4.8 3.5c.9.5 1.6.3 1.8-.8l3.1-14.8c.4-1.6-.6-2.3-.9-1.8Z"/></svg>
-              Telegram
+            <a href="https://github.com/SupiVPN/supivpn">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="5" r="3"/><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><path d="M6 8v8M18 8a11 11 0 0 1-9 11"/></svg>
+              GitHub
             </a>
           </nav>
           <span class="closing-wordmark" aria-hidden="true">SupiVPN</span>
