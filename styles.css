@@ -94,6 +94,82 @@ h1 span { color: var(--green); }
 .principle h3 { margin: 0 0 13px; font-size: 17px; font-weight: 500; letter-spacing: -.4px; }
 .principle p { margin: 0; max-width: 260px; color: var(--muted); font-size: 12px; line-height: 1.85; }
 
+.architecture-section { padding-top: 88px; }
+.architecture-section > h2 { margin: 24px 0; font-size: clamp(34px, 4vw, 54px); font-weight: 400; line-height: 1.08; letter-spacing: -1.8px; }
+.architecture-section > h2 span { color: var(--green); }
+.architecture-intro { max-width: 700px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.architecture-map { margin: 32px 0; padding: 28px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.architecture-lane { margin: 0 0 18px; color: var(--muted); font: 10px/1.7 "Courier New", monospace; letter-spacing: 1px; text-transform: uppercase; }
+.architecture-row { display: grid; grid-template-columns: minmax(0, 1fr) 74px minmax(0, 1.25fr) 74px minmax(0, 1fr); align-items: stretch; }
+.architecture-node { position: relative; min-width: 0; padding: 16px 12px; text-align: center; }
+.architecture-node h3 { display: flex; flex-direction: column; align-items: center; gap: 15px; margin: 0 0 14px; font-size: 17px; font-weight: 500; line-height: 1.3; }
+.architecture-node p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.75; }
+.architecture-core .architecture-symbol { border-color: #6d9b60; color: var(--green); }
+.architecture-core h3 { color: var(--green); }
+.architecture-tag { display: block; margin-top: 18px; color: #cad8cb; font: 10px/1.7 "Courier New", monospace; }
+.architecture-parts { margin: 0; }
+.architecture-parts > div + div { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+.architecture-parts dt { font-size: 12px; line-height: 1.6; }
+.architecture-parts dd { margin: 3px 0 0; color: var(--muted); font-size: 11px; line-height: 1.65; }
+.architecture-connector { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; gap: 4px; padding-top: 40px; color: var(--muted); font-size: 10px; }
+.architecture-connector > span:last-child { color: var(--green); font-size: 28px; line-height: 1; }
+.architecture-bridge { margin: 20px 0 26px; text-align: center; color: var(--green); font-size: 12px; line-height: 1.8; }
+.architecture-bridge > span:last-child { color: var(--muted); font-size: 10px; }
+.architecture-map figcaption { margin-top: 22px; max-width: 740px; color: var(--muted); font-size: 11px; line-height: 1.8; }
+.architecture-direction { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; }
+.architecture-status { display: inline-block; color: var(--green); font: 10px/1.7 "Courier New", monospace; text-transform: uppercase; letter-spacing: 1px; }
+.architecture-planned { color: #d2c4ee; }
+.architecture-direction h3 { margin: 10px 0 12px; font-size: 18px; font-weight: 500; line-height: 1.3; }
+.architecture-direction p, .architecture-note { color: var(--muted); font-size: 12px; line-height: 1.85; }
+.architecture-direction p { margin: 0; }
+.architecture-note { margin: 24px 0 16px; }
+.project-description > .text-link { justify-self: start; grid-column: 1 / -1; }
+
+@media (max-width: 900px) {
+  .architecture-row { grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1.25fr) 52px minmax(0, 1fr); }
+  .architecture-map { padding: 20px; }
+  .architecture-node { padding: 16px; }
+  .architecture-node h3 { font-size: 15px; }
+  .architecture-connector { font-size: 9px; }
+}
+
+@media (max-width: 650px) {
+  .architecture-section { padding-top: 62px; }
+  .architecture-section > h2 { letter-spacing: -1.1px; }
+  .architecture-intro { font-size: 13px; }
+  .architecture-map { padding: 20px 16px; margin-block: 26px; }
+  .architecture-row { grid-template-columns: minmax(0, 1fr); }
+  .architecture-node { padding: 20px; }
+  .architecture-node h3 { font-size: 17px; }
+  .architecture-connector { flex-direction: row; justify-content: center; padding-top: 0; gap: 10px; min-height: 42px; font-size: 10px; }
+  .architecture-connector > span:last-child { transform: rotate(90deg); }
+  .architecture-bridge { margin-block: 26px; padding-block: 16px; border-block: 1px dashed #3e4e42; }
+  .architecture-direction { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .architecture-direction h3 { margin-block: 7px 8px; }
+  .architecture-direction p { font-size: 13px; }
+}
+
+.architecture-hint { margin: 18px 0 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.architecture-symbol { display: grid; place-items: center; width: 82px; height: 82px; flex-shrink: 0; border: 1px solid #3e4e42; border-radius: 50%; background: #152018; color: #c8d6ca; transition: color 160ms ease, background 160ms ease, border-color 160ms ease, box-shadow 160ms ease; }
+.architecture-symbol svg { width: 44px; height: 44px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.architecture-trigger { display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: inherit; cursor: pointer; }
+.architecture-trigger::after { content: ""; position: absolute; inset: 0; }
+.architecture-trigger:focus-visible { outline: none; }
+.architecture-trigger:focus-visible .architecture-symbol { outline: 2px solid var(--green); outline-offset: 5px; }
+.architecture-trigger:hover .architecture-symbol, .architecture-trigger:focus-visible .architecture-symbol, .architecture-active .architecture-symbol { background: var(--green); border-color: var(--green); color: var(--background); box-shadow: 0 0 26px #68f54826; }
+.architecture-active { z-index: 2; }
+.architecture-popover { position: absolute; top: 100%; left: 0; z-index: 3; width: 320px; max-width: calc(100vw - 48px); padding-top: 10px; text-align: left; }
+.architecture-row > .architecture-node:last-child .architecture-popover { left: auto; right: 0; }
+.architecture-popover.architecture-above { top: auto; bottom: 100%; padding-top: 0; padding-bottom: 10px; }
+.architecture-popover-body { padding: 20px; border: 1px solid #6d9b60; border-radius: 8px; background: #17221a; box-shadow: 0 12px 36px #0008; }
+.architecture-popover strong { display: block; margin-bottom: 10px; color: var(--text); font-size: 14px; line-height: 1.5; font-weight: 500; }
+.architecture-popover .architecture-popover-status { margin-top: 12px; padding-top: 12px; border-top: 1px solid #3e4e42; color: #d0dfd0; font-size: 11px; }
+@media (max-width: 650px) {
+  .architecture-popover, .architecture-popover.architecture-above { position: relative; top: auto; bottom: auto; width: 100%; max-width: none; margin-block: 16px; padding-top: 0; }
+  .architecture-popover-body { padding: 16px; }
+  .architecture-trigger::after { bottom: auto; height: 132px; }
+}
+
 .integration-section { display: grid; grid-template-columns: 1fr 2.5fr; gap: 40px; padding-block: 74px; margin-top: 74px; border-block: 1px solid var(--line); }
 .integration-section > .section-label { align-self: start; padding-top: 7px; }
 .integration-body { min-width: 0; }
