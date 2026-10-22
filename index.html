@@ -4,17 +4,39 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#090d0b">
-    <meta name="description" content="Meet SupiVPN: a VPN project for teams, bringing workplace sign-in, group-based access, and session controls together.">
+    <meta name="description" content="SupiVPN brings SAML single sign-on, group-based access and session controls to OpenVPN Community. Explore the open-source project and help shape what comes next.">
     <link rel="canonical" href="https://supivpn.com/">
     <meta property="og:url" content="https://supivpn.com/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="SupiVPN — Go Supi!">
-    <meta property="og:description" content="Your team. Your tunnel. Your rules. VPN access built around your work identity.">
+    <meta property="og:title" content="Go Supi! SAML SSO for OpenVPN Community">
+    <meta property="og:description" content="Your team. Your tunnel. Your rules. Explore open-source VPN access built around work identity, and help shape what comes next.">
+    <meta property="og:image" content="https://supivpn.com/assets/supivpn-logo.png">
+    <meta property="og:image:width" content="900">
+    <meta property="og:image:height" content="900">
+    <meta property="og:image:alt" content="The SupiVPN raccoon holding a green shield.">
     <meta name="color-scheme" content="dark">
-    <title>SupiVPN — Go Supi!</title>
+    <title>SupiVPN — SAML SSO for OpenVPN Community</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=d05692c965b6">
+    <link rel="stylesheet" href="styles.css?v=332b010f7a7b">
     <script src="architecture.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "@id": "https://supivpn.com/#software",
+        "name": "SupiVPN",
+        "url": "https://supivpn.com/",
+        "description": "Open-source SAML single sign-on, group-based access and session controls for OpenVPN Community. Currently in development.",
+        "codeRepository": "https://github.com/SupiVPN/supivpn",
+        "programmingLanguage": "Go",
+        "license": "https://github.com/SupiVPN/supivpn/blob/main/LICENSE",
+        "author": {
+          "@type": "Person",
+          "name": "Stanislav Kazachkov",
+          "url": "https://github.com/enotf"
+        }
+      }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -27,8 +49,8 @@
         </a>
         <nav class="main-nav" aria-label="Main navigation">
           <a href="#features">Features</a>
+          <a href="#join">Join in</a>
           <a href="#support">Support</a>
-          <a href="#contact">Contact <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></a>
         </nav>
       </header>
 
@@ -46,8 +68,12 @@
             <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Private access. A familiar way in.</p>
             <h1 id="hero-title">Go <span>Supi!</span></h1>
             <p class="hero-tagline">Your team. Your tunnel. Your rules.</p>
-            <p class="hero-description">VPN access that starts with your work identity<br class="desktop-break"> and follows your team’s access rules.</p>
-            <a class="button" href="#project">Meet SupiVPN <span class="button-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m16 8-2.5 5.5L8 16l2.5-5.5Z"/></svg></span></a>
+            <p class="hero-description">Open-source SAML single sign-on and access control for OpenVPN Community. Your team signs in with its work identity. You set the rules.</p>
+            <div class="hero-actions">
+              <a class="button" href="https://github.com/SupiVPN/supivpn">Explore on GitHub <span class="button-icon" aria-hidden="true">↗</span></a>
+              <a class="text-link" href="#architecture">How it works <span aria-hidden="true">↓</span></a>
+            </div>
+            <p class="hero-status">In development. <a href="#join">Help shape what comes next.</a></p>
           </div>
 
           <div class="hero-art">
@@ -75,8 +101,8 @@
           <div class="project-body">
             <h2 id="project-title">Your people. Your resources.<br><span>A connection on your terms.</span></h2>
             <div class="project-description">
-              <p>SupiVPN is a VPN project for teams that need access to private resources. It brings workplace sign-in and group-based access together.</p>
-              <p>People use their existing work identity. Teams define who can connect, with session rules that fit each group.</p>
+              <p>Your team already has a work identity. SupiVPN connects that identity to VPN access: browser-based SAML sign-in, groups and session rules, with OpenVPN Community carrying the traffic.</p>
+              <p>Built in Go and self-hosted on your infrastructure, SupiVPN gives you control over access decisions. Group IP pools let your network rules distinguish traffic by team.</p>
               <a class="text-link" href="#architecture">See how the pieces fit <span aria-hidden="true">↓</span></a>
             </div>
           </div>
@@ -234,9 +260,59 @@
           </div>
         </section>
 
+        <section class="join-section" id="join" aria-labelledby="join-title">
+          <div class="section-label"><span class="status-dot" aria-hidden="true"></span> Build with us <span class="section-index">/ 05</span></div>
+          <h2 id="join-title">Early days.<br><span>Room for your ideas.</span></h2>
+          <p class="join-intro">SupiVPN is built in the open by <a href="https://github.com/enotf">Stanislav Kazachkov (@enotf)</a>. The code, architecture and releases are public. The step-by-step deployment guide is still in progress. You can already explore the design, share a use case or help improve it.</p>
+          <div class="join-grid">
+            <article>
+              <h3>Follow the build.</h3>
+              <p>See what changed in each release. On GitHub, choose Watch → Custom → Releases to hear when the next one lands.</p>
+              <a class="text-link" href="https://github.com/SupiVPN/supivpn/releases">Browse releases <span aria-hidden="true">↗</span></a>
+            </article>
+            <article>
+              <h3>Bring your use case.</h3>
+              <p>Which identity provider does your team use? What makes VPN access awkward today? Share the workflow you would like SupiVPN to support.</p>
+              <a class="text-link" href="https://github.com/SupiVPN/supivpn/issues">Share an idea on GitHub <span aria-hidden="true">↗</span></a>
+            </article>
+            <article>
+              <h3>Make a small difference.</h3>
+              <p>Clearer docs, a focused test or a code fix all help. Local unit tests need no cloud account or real identity provider; docs can be edited directly.</p>
+              <a class="text-link" href="https://github.com/SupiVPN/supivpn/blob/main/CONTRIBUTING.md">Find your way in <span aria-hidden="true">↗</span></a>
+            </article>
+          </div>
+        </section>
+
+        <section class="faq-section" id="questions" aria-labelledby="questions-title">
+          <div class="section-label"><span class="status-dot" aria-hidden="true"></span> A few good questions <span class="section-index">/ 06</span></div>
+          <h2 id="questions-title">Before you dive in.</h2>
+          <div class="faq-list">
+            <details>
+              <summary>Who is SupiVPN for?</summary>
+              <p>Teams exploring self-hosted access to private networks and services using their existing work identity. SupiVPN brings SAML sign-in, group policies and session controls to OpenVPN Community. You operate the infrastructure and configure its routing and firewall rules.</p>
+            </details>
+            <details>
+              <summary>How does sign-in work?</summary>
+              <p>The VPN client opens a browser sign-in with your identity provider. SupiVPN verifies the SAML response and evaluates group and session policy. Its Go agent applies the decision on the VPN node; OpenVPN carries the tunnel traffic. See the <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/ARCHITECTURE.md">technical architecture</a>.</p>
+            </details>
+            <details>
+              <summary>Which identity providers and protocols are supported?</summary>
+              <p>SAML is the authentication protocol implemented today, with Okta as the documented setup example. Other SAML providers need interoperability checks against the <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/IDENTITY_PROVIDER.md">IdP requirements</a>. Additional authentication protocols and storage backends are planned; PostgreSQL is the current shared store.</p>
+            </details>
+            <details>
+              <summary>Can I use it in production today?</summary>
+              <p>SupiVPN is still in development, and the complete deployment guide is being prepared. Releases are available for evaluation, with open production-readiness work. Review the <a href="https://github.com/SupiVPN/supivpn#current-limitations">current limitations</a> and <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/SECURITY_MODEL.md">security model</a> before choosing it for a deployment.</p>
+            </details>
+            <details>
+              <summary>Is SupiVPN open source? How can I help?</summary>
+              <p>Yes. SupiVPN is licensed under <a href="https://github.com/SupiVPN/supivpn/blob/main/LICENSE">AGPL-3.0-only</a>. You can read the code, contribute improvements, share your use case or <a href="#support">support development</a>. Sponsorship is voluntary and includes no services, priority support or exclusive features.</p>
+            </details>
+          </div>
+        </section>
+
         <section class="support-section" id="support" aria-labelledby="support-title">
           <div class="support-copy">
-            <div class="section-label"><span class="status-dot" aria-hidden="true"></span> Keep it open <span class="section-index">/ 05</span></div>
+            <div class="section-label"><span class="status-dot" aria-hidden="true"></span> Keep it open <span class="section-index">/ 07</span></div>
             <h2 id="support-title">Good code needs<br><span>a keepalive.</span></h2>
             <p>Help sustain the open-source work behind SupiVPN: maintenance, security testing and documentation.</p>
             <div class="support-actions">
