@@ -13,7 +13,7 @@
     <meta name="color-scheme" content="dark">
     <title>SupiVPN — Go Supi!</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=d05692c965b6">
     <script src="architecture.js" defer></script>
   </head>
   <body>
@@ -34,11 +34,11 @@
 
       <main id="main">
         <nav class="project-badges" aria-label="Live project status on GitHub">
-          <a href="https://github.com/SupiVPN/supivpn/actions/workflows/checks.yml"><img src="https://img.shields.io/github/actions/workflow/status/SupiVPN/supivpn/checks.yml?branch=main&amp;event=push&amp;style=flat-square&amp;logo=github&amp;label=checks" alt="Build checks" height="20" decoding="async"></a>
-          <a href="https://github.com/SupiVPN/supivpn/releases/latest"><img src="https://img.shields.io/github/v/release/SupiVPN/supivpn?style=flat-square&amp;color=16a34a&amp;label=release" alt="Latest release" height="20" decoding="async"></a>
-          <a href="https://github.com/SupiVPN/supivpn/blob/main/go.mod"><img src="https://img.shields.io/github/go-mod/go-version/SupiVPN/supivpn?style=flat-square&amp;logo=go&amp;logoColor=white" alt="Go version" height="20" decoding="async"></a>
-          <a href="https://github.com/SupiVPN/supivpn/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0--only-2563eb?style=flat-square" alt="License: AGPL-3.0-only" height="20" decoding="async"></a>
-          <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/RELEASES.md"><img src="https://img.shields.io/badge/linux-arm64%20%7C%20amd64-475569?style=flat-square&amp;logo=linux&amp;logoColor=white" alt="Linux ARM64 and AMD64" height="20" decoding="async"></a>
+          <a href="https://github.com/SupiVPN/supivpn/actions/workflows/checks.yml"><img src="https://img.shields.io/github/actions/workflow/status/SupiVPN/supivpn/checks.yml?branch=main&amp;event=push&amp;style=flat-square&amp;logo=github&amp;label=checks" alt="Build checks" width="115" height="20" decoding="async"></a>
+          <a href="https://github.com/SupiVPN/supivpn/releases/latest"><img src="https://img.shields.io/github/v/release/SupiVPN/supivpn?style=flat-square&amp;color=16a34a&amp;label=release" alt="Latest release" width="94" height="20" decoding="async"></a>
+          <a href="https://github.com/SupiVPN/supivpn/blob/main/go.mod"><img src="https://img.shields.io/github/go-mod/go-version/SupiVPN/supivpn?style=flat-square&amp;logo=go&amp;logoColor=white" alt="Go version" width="95" height="20" decoding="async"></a>
+          <a href="https://github.com/SupiVPN/supivpn/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0--only-2563eb?style=flat-square" alt="License: AGPL-3.0-only" width="136" height="20" decoding="async"></a>
+          <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/RELEASES.md"><img src="https://img.shields.io/badge/linux-arm64%20%7C%20amd64-475569?style=flat-square&amp;logo=linux&amp;logoColor=white" alt="Linux ARM64 and AMD64" width="151" height="20" decoding="async"></a>
         </nav>
 
         <section class="hero" aria-labelledby="hero-title">
@@ -53,7 +53,11 @@
           <div class="hero-art">
             <div class="orbit orbit-outer" aria-hidden="true"></div>
             <div class="orbit orbit-inner" aria-hidden="true"></div>
-            <img class="mascot" src="assets/supivpn-logo.png" alt="The SupiVPN raccoon in a dark hood, holding a bright green shield with a lock." width="900" height="900" fetchpriority="high" decoding="async">
+            <picture class="mascot">
+              <source type="image/avif" srcset="assets/mascot-400.c380bd6a4e17.avif 400w, assets/mascot-700.0a635bdb0135.avif 700w, assets/mascot-900.da3328bf18a7.avif 900w" sizes="(max-width: 650px) min(87vw, 433px), (max-width: 1600px) 50vw, 790px">
+              <source type="image/webp" srcset="assets/mascot-400.5ff5a8efd661.webp 400w, assets/mascot-700.20d44a468107.webp 700w, assets/mascot-900.2760cf4ee020.webp 900w" sizes="(max-width: 650px) min(87vw, 433px), (max-width: 1600px) 50vw, 790px">
+              <img src="assets/supivpn-logo.png" alt="The SupiVPN raccoon in a dark hood, holding a bright green shield with a lock." width="900" height="900" fetchpriority="high" decoding="async">
+            </picture>
             <div class="mascot-caption"><span class="caption-symbol" aria-hidden="true">✳</span><span>A watchful little companion.<br><strong>A very Supi state of mind.</strong></span></div>
           </div>
         </section>
