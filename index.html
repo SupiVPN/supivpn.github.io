@@ -331,11 +331,15 @@
             </details>
             <details>
               <summary>How does sign-in work?</summary>
-              <p>The VPN client opens a browser sign-in with your identity provider. SupiVPN verifies the SAML response and evaluates group and session policy. Its Go agent applies the decision on the VPN node; OpenVPN carries the tunnel traffic. See the <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/ARCHITECTURE.md">technical architecture</a>.</p>
+              <p>The VPN client opens your browser. You confirm that you started this connection, then sign in with your identity provider. SupiVPN verifies the SAML response and evaluates group and session policy. Its Go agent applies the decision on the VPN node; OpenVPN carries the tunnel traffic. Since v0.7.0, <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/IDENTITY_PROVIDER.md#vpn-login-confirmation">confirmation is on by default</a>. Only approve a connection you started.</p>
             </details>
             <details>
               <summary>Which identity providers and protocols are supported?</summary>
               <p>SAML is the authentication protocol implemented today, with Okta as the documented setup example. Other SAML providers need interoperability checks against the <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/IDENTITY_PROVIDER.md">IdP requirements</a>. Additional authentication protocols and storage backends are planned; PostgreSQL is the current shared store.</p>
+            </details>
+            <details>
+              <summary>Can SAML assertions be encrypted?</summary>
+              <p>Yes, from <a href="https://github.com/SupiVPN/supivpn/releases/tag/v0.7.0">v0.7.0</a>. RSA-OAEP and AES-GCM encryption is off by default. You can accept both signed plaintext and encrypted assertions while switching over, then require encryption. HTTPS and signature checks still apply. See the <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/ASSERTION_ENCRYPTION.md">encryption guide</a>.</p>
             </details>
             <details>
               <summary>Can I use it in production today?</summary>
