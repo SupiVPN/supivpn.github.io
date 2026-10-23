@@ -98,6 +98,29 @@ h1 span { color: var(--green); }
 .principle h3 { margin: 0 0 13px; font-size: 17px; font-weight: 500; letter-spacing: -.4px; }
 .principle p { margin: 0; max-width: 260px; color: var(--muted); font-size: 12px; line-height: 1.85; }
 
+.deployment-section { padding-top: 74px; }
+.deployment-section > h2 { margin: 24px 0; font-size: clamp(34px, 4vw, 54px); font-weight: 400; line-height: 1.08; letter-spacing: -1.8px; }
+.deployment-section > h2 span { color: var(--green); }
+.deployment-intro { max-width: 700px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.deployment-steps .architecture-status { margin-bottom: 12px; }
+.deployment-steps p a { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+.deployment-steps p a:hover { color: var(--green); }
+.deployment-next { display: flex; align-items: center; gap: 32px; margin-top: 36px; padding: 28px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.deployment-next > div { flex: 1; min-width: 0; }
+.deployment-next h3 { margin: 0 0 12px; font-size: 20px; font-weight: 500; letter-spacing: -.4px; }
+.deployment-next p { max-width: 660px; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.85; }
+.deployment-next .button { flex-shrink: 0; gap: 20px; }
+.deployment-links { display: flex; flex-wrap: wrap; gap: 16px 28px; margin-top: 20px; }
+.deployment-links .text-link { min-height: 44px; }
+@media (max-width: 1000px) {
+  .deployment-next { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 650px) {
+  .deployment-section { padding-top: 62px; }
+  .deployment-next { padding: 22px; gap: 22px; }
+  .deployment-next .button { width: 100%; gap: 12px; padding-left: 14px; }
+}
+
 .architecture-section { padding-top: 88px; }
 .architecture-section > h2 { margin: 24px 0; font-size: clamp(34px, 4vw, 54px); font-weight: 400; line-height: 1.08; letter-spacing: -1.8px; }
 .architecture-section > h2 span { color: var(--green); }
