@@ -73,7 +73,7 @@
               <a class="button" href="#get-started">Get started <span class="button-icon" aria-hidden="true">↓</span></a>
               <a class="text-link" href="https://github.com/SupiVPN/supivpn">Explore on GitHub <span aria-hidden="true">↗</span></a>
             </div>
-            <p class="hero-status">Debian packages are here. <a href="https://github.com/SupiVPN/supivpn/blob/main/DEPLOYMENT.md">Start with the deployment guide.</a></p>
+            <p class="hero-status"><a href="https://github.com/SupiVPN/supivpn/releases/tag/v0.8.0">v0.8.0 is here</a>: profile ownership and a local operator CLI. <a href="https://github.com/SupiVPN/supivpn/blob/main/DEPLOYMENT.md">Start with the deployment guide.</a></p>
           </div>
 
           <div class="hero-art">
@@ -117,7 +117,7 @@
             <article class="principle">
               <div class="principle-top"><span>01</span><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="m20 4 13 5v10c0 8-7 14-13 17C14 33 7 27 7 19V9Z"/><path d="m14 20 4 4 9-10"/></svg></div>
               <h3>Sign in as yourself.</h3>
-              <p>Connect using your organization’s existing sign-in. Your work identity is your way in.</p>
+              <p>Connect using your organization’s existing sign-in. Enable profile binding to require the same verified identity that downloaded the profile.</p>
             </article>
             <article class="principle">
               <div class="principle-top"><span>02</span><svg viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><circle cx="16" cy="13" r="6"/><path d="M5 33v-4a8 8 0 0 1 8-8h6a8 8 0 0 1 8 8v4M28 7a6 6 0 0 1 0 12M31 23a7 7 0 0 1 4 6v4"/></svg></div>
@@ -140,7 +140,7 @@
             <article>
               <span class="architecture-status">01 / Install</span>
               <h3>Let APT do its part.</h3>
-              <p>Packages for amd64 and arm64 are available from <a href="https://apt.supivpn.com/">apt.supivpn.com</a>. Install the node and controller together, or choose the packages separately. No Go SDK or source checkout needed.</p>
+              <p>Packages for amd64 and arm64 are available from <a href="https://apt.supivpn.com/">apt.supivpn.com</a>. The supivpn metapackage installs the node, controller and local operator CLI together. You can also choose packages separately. No Go SDK or source checkout needed.</p>
               <a class="text-link" href="https://github.com/SupiVPN/supivpn/blob/main/DEPLOYMENT.md#1-prepare-the-vm-and-packages">Set up the signed repository <span aria-hidden="true">↗</span></a>
             </article>
             <article>
@@ -166,6 +166,8 @@
           <nav class="deployment-links" aria-label="More deployment documentation">
             <a class="text-link" href="https://github.com/SupiVPN/supivpn/blob/main/docs/GROUPS.md">Groups &amp; address pools <span aria-hidden="true">↗</span></a>
             <a class="text-link" href="https://github.com/SupiVPN/supivpn/blob/main/docs/REMOTE_DATABASE.md">External PostgreSQL <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="https://github.com/SupiVPN/supivpn/blob/main/docs/PROFILE_BINDING.md">Profile ownership &amp; migration <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="https://github.com/SupiVPN/supivpn/blob/main/docs/CLI.md">Local operator CLI <span aria-hidden="true">↗</span></a>
             <a class="text-link" href="https://github.com/SupiVPN/supivpn/blob/main/DEPLOYMENT.md#architecture-limits-to-plan-for">Architecture limits <span aria-hidden="true">↗</span></a>
           </nav>
         </section>
@@ -229,7 +231,7 @@
                   <div class="architecture-popover-body">
                     <strong>The team’s way in.</strong>
                     <p>A person uses an existing VPN client and follows the browser sign-in flow. After access is approved, the client’s tunnel carries traffic to the VPN node.</p>
-                    <p class="architecture-popover-status">Today: OpenVPN clients with browser authentication support, including OpenVPN Connect.</p>
+                    <p class="architecture-popover-status">Today: OpenVPN Connect and OpenVPN 3 Linux with browser authentication. Linux imports a downloaded .ovpn file after SAML sign-in.</p>
                   </div>
                 </div>
                 <p>Your team’s way into the network.</p>
@@ -293,7 +295,7 @@
           <div class="integration-body">
             <h2 id="integration-title">Works with <span>OpenVPN®.</span></h2>
             <p>SupiVPN works alongside unmodified OpenVPN® Community software. SupiVPN handles sign-in and access policies, while OpenVPN® provides the VPN transport.</p>
-            <p>Client connections use <a href="https://openvpn.net/client/">OpenVPN® Connect <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>, downloaded separately from its official website.</p>
+            <p>Use <a href="https://openvpn.net/client/">OpenVPN® Connect <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></a>, downloaded separately from its official website, or OpenVPN 3 Linux. See the <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/PROFILE_BINDING.md#server-url-and-linux-import">client import guide</a> for each workflow and its validation limits.</p>
             <span class="development-note">SupiVPN is currently in development.</span>
           </div>
         </section>
@@ -332,6 +334,18 @@
             <details>
               <summary>How does sign-in work?</summary>
               <p>The VPN client opens your browser. You confirm that you started this connection, then sign in with your identity provider. SupiVPN verifies the SAML response and evaluates group and session policy. Its Go agent applies the decision on the VPN node; OpenVPN carries the tunnel traffic. Since v0.7.0, <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/IDENTITY_PROVIDER.md#vpn-login-confirmation">confirmation is on by default</a>. Only approve a connection you started.</p>
+            </details>
+            <details>
+              <summary>How do I get my VPN profile?</summary>
+              <p>Sign in with your organization first. With Server URL enabled in v0.8.0, OpenVPN Connect opens the browser for SAML sign-in, then imports through a one-use link. On Linux, sign in on the website, download the .ovpn file and import it into OpenVPN 3 Linux. Your IdP password stays out of the VPN client. Read the <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/PROFILE_BINDING.md#server-url-and-linux-import">import guide and tested client coverage</a>.</p>
+            </details>
+            <details>
+              <summary>Can I tie a profile to its owner?</summary>
+              <p>Yes. Opt-in profile binding in v0.8.0 requires the active profile’s verified SAML owner at connection time. It binds an account, not a physical device; Device ID is diagnostic information. Existing profiles can keep their own listener during the 0.8 and 0.9 migration window, without the new ownership guarantee. Schema 11 and explicit two-port configuration are required; the setup helper does not convert an existing deployment. Follow the <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/PROFILE_BINDING.md">migration guide</a>.</p>
+            </details>
+            <details>
+              <summary>How do I block a profile or inspect sessions?</summary>
+              <p>The <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/CLI.md">local operator CLI</a> in v0.8.0 can inspect services, list and block bound profiles, and request session termination. It requires root on a combined Debian node/controller host; the database may be external. Blocking prevents new admission and does not disconnect established tunnels or ban an account. Lambda uses the separate <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/LAMBDA_PROFILE_ADMIN.md">temporary administration procedure</a>.</p>
             </details>
             <details>
               <summary>Which identity providers and protocols are supported?</summary>
