@@ -73,7 +73,7 @@
               <a class="button" href="#get-started">Get started <span class="button-icon" aria-hidden="true">↓</span></a>
               <a class="text-link" href="https://github.com/SupiVPN/supivpn">Explore on GitHub <span aria-hidden="true">↗</span></a>
             </div>
-            <p class="hero-status"><a href="https://github.com/SupiVPN/supivpn/releases/tag/v0.8.0">v0.8.0 is here</a>: profile ownership and a local operator CLI. <a href="https://github.com/SupiVPN/supivpn/blob/main/DEPLOYMENT.md">Start with the deployment guide.</a></p>
+            <p class="hero-status"><a href="https://github.com/SupiVPN/supivpn/releases/tag/v0.9.0">v0.9.0 is here</a>: UDP first, optional TCP/443, and profiles tied to their owner. <a href="https://github.com/SupiVPN/supivpn/blob/main/DEPLOYMENT.md">Start with the deployment guide.</a></p>
           </div>
 
           <div class="hero-art">
@@ -117,7 +117,7 @@
             <article class="principle">
               <div class="principle-top"><span>01</span><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="m20 4 13 5v10c0 8-7 14-13 17C14 33 7 27 7 19V9Z"/><path d="m14 20 4 4 9-10"/></svg></div>
               <h3>Sign in as yourself.</h3>
-              <p>Connect using your organization’s existing sign-in. Enable profile binding to require the same verified identity that downloaded the profile.</p>
+              <p>Connect using your organization’s existing sign-in. Each profile requires the same verified identity that downloaded it.</p>
             </article>
             <article class="principle">
               <div class="principle-top"><span>02</span><svg viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false"><circle cx="16" cy="13" r="6"/><path d="M5 33v-4a8 8 0 0 1 8-8h6a8 8 0 0 1 8 8v4M28 7a6 6 0 0 1 0 12M31 23a7 7 0 0 1 4 6v4"/></svg></div>
@@ -165,6 +165,7 @@
           </div>
           <nav class="deployment-links" aria-label="More deployment documentation">
             <a class="text-link" href="https://github.com/SupiVPN/supivpn/blob/main/docs/GROUPS.md">Groups &amp; address pools <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="https://github.com/SupiVPN/supivpn/blob/main/docs/TRANSPORTS.md">UDP &amp; optional TCP <span aria-hidden="true">↗</span></a>
             <a class="text-link" href="https://github.com/SupiVPN/supivpn/blob/main/docs/REMOTE_DATABASE.md">External PostgreSQL <span aria-hidden="true">↗</span></a>
             <a class="text-link" href="https://github.com/SupiVPN/supivpn/blob/main/docs/PROFILE_BINDING.md">Profile ownership &amp; migration <span aria-hidden="true">↗</span></a>
             <a class="text-link" href="https://github.com/SupiVPN/supivpn/blob/main/docs/CLI.md">Local operator CLI <span aria-hidden="true">↗</span></a>
@@ -243,8 +244,8 @@
                 <div class="architecture-popover" id="architecture-node-details" role="tooltip" hidden>
                   <div class="architecture-popover-body">
                     <strong>Apply the rules. Carry the packets.</strong>
-                    <p>The Go agent applies access decisions through the management API and allocates IPs from local group pools. A separate OpenVPN process handles encryption, tunnels and traffic forwarding.</p>
-                    <p class="architecture-popover-status">Identity and access policy remain separate from VPN transport. The current transport is OpenVPN.</p>
+                    <p>One Go agent applies access decisions and assigns IPs from shared local group pools. Unmodified OpenVPN handles the tunnels: UDP by default, with a second process when TCP fallback is enabled.</p>
+                    <p class="architecture-popover-status">Both transports use the same profile ownership checks, access policy and address pool on the node.</p>
                   </div>
                 </div>
                 <dl class="architecture-parts">
@@ -340,12 +341,17 @@
               <p>Sign in with your organization first. With Server URL enabled in v0.8.0, OpenVPN Connect opens the browser for SAML sign-in, then imports through a one-use link. On Linux, sign in on the website, download the .ovpn file and import it into OpenVPN 3 Linux. Your IdP password stays out of the VPN client. Read the <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/PROFILE_BINDING.md#server-url-and-linux-import">import guide and tested client coverage</a>.</p>
             </details>
             <details>
-              <summary>Can I tie a profile to its owner?</summary>
-              <p>Yes. Opt-in profile binding in v0.8.0 requires the active profile’s verified SAML owner at connection time. It binds an account, not a physical device; Device ID is diagnostic information. Existing profiles can keep their own listener during the 0.8 and 0.9 migration window, without the new ownership guarantee. Schema 11 and explicit two-port configuration are required; the setup helper does not convert an existing deployment. Follow the <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/PROFILE_BINDING.md">migration guide</a>.</p>
+              <summary>Is every profile tied to its owner?</summary>
+              <p>Yes. Since v0.9.0, every supported listener requires an active profile and its verified SAML owner. This binds an account, not a physical device; Device ID is diagnostic information. Existing bound UDP-only profiles remain valid. The migration window was shortened: unbound profiles must be replaced while still on v0.8.x, before upgrading. Schema 12 and coordinated server updates are required. Follow the <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/PROFILE_BINDING.md">migration guide</a>.</p>
+            </details>
+            <details>
+              <summary>Can I use TCP when UDP is blocked?</summary>
+              <p>Yes, from v0.9.0. UDP remains the default; operators can enable TCP/443 as a backup in the same profile. Both transports share one agent and the node’s address pool, without reserving half for TCP. TCP is off by default. See the <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/TRANSPORTS.md">transport setup and tested client coverage</a>.</p>
+              <p>Switching creates a new tunnel and requires SAML authorization again. If an established UDP tunnel silently loses connectivity, the old slot must first be released; recovery can take roughly two minutes plus sign-in and network time. Existing connections are interrupted. Initial fallback from an unavailable UDP endpoint is a separate, faster case.</p>
             </details>
             <details>
               <summary>How do I block a profile or inspect sessions?</summary>
-              <p>The <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/CLI.md">local operator CLI</a> in v0.8.0 can inspect services, list and block bound profiles, and request session termination. It requires root on a combined Debian node/controller host; the database may be external. Blocking prevents new admission and does not disconnect established tunnels or ban an account. Lambda uses the separate <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/LAMBDA_PROFILE_ADMIN.md">temporary administration procedure</a>.</p>
+              <p>The <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/CLI.md">local operator CLI</a> can inspect services, list profiles with their recorded owner, block profiles and request session termination. It requires root on a combined Debian node/controller host; the database may be external. Blocking prevents new admission and does not disconnect established tunnels or ban an account. Lambda uses the separate <a href="https://github.com/SupiVPN/supivpn/blob/main/docs/LAMBDA_PROFILE_ADMIN.md">temporary administration procedure</a>.</p>
             </details>
             <details>
               <summary>Which identity providers and protocols are supported?</summary>
